@@ -1,0 +1,16 @@
+.blog-area {
+  background-color: #ebebeb;
+}
+
+.blog-item {
+  background: #fff;
+  padding: 30px;
+}
+
+.blog-item .content {
+  padding-top: 20px;
+}
+.blog-item .content h4 {
+  text-transform: capitalize;
+  font-size: 20px;
+}

@@ -1,38 +1,49 @@
-.App {
-  text-align: center;
+/* Defaluit CSS */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+}
+p,
+a,
+label {
+  font-family: "Poppins", sans-serif;
+}
+ul,
+li {
+  font-family: "Poppins", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.default-btn {
+  display: inline-flex !important;
+  height: 50px !important;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #fff !important;
+  border-radius: 10px !important;
+  color: #ea0129 !important;
+  border: none !important;
+  font-weight: 500 !important;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  padding: 0px 28px !important;
+  transition: all 0.5s;
+}
+.default-btn:focus {
+  outline: none;
+  box-shadow: none !important;
+}
+.default-btn:hover {
+  background-color: #ea0129 !important;
+  color: #fff !important;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ic-sec-padding {
+  padding: 80px 0px;
 }
