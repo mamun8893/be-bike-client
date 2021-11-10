@@ -25,7 +25,7 @@ const Blog = () => {
                 </div>
                 <div className="content">
                   <h4>Basic riding techniques</h4>
-                  <div class="post-meta-left">
+                  <div className="post-meta-left">
                     <span>9 Feb, 2015 by admin</span>
                   </div>
                 </div>
@@ -38,7 +38,7 @@ const Blog = () => {
                 </div>
                 <div className="content">
                   <h4>No. 1 rule : safety first!</h4>
-                  <div class="post-meta-left">
+                  <div className="post-meta-left">
                     <span>9 Feb, 2015 by admin</span>
                   </div>
                 </div>
@@ -51,7 +51,7 @@ const Blog = () => {
                 </div>
                 <div className="content">
                   <h4>Survive long bike road trips</h4>
-                  <div class="post-meta-left">
+                  <div className="post-meta-left">
                     <span>9 Feb, 2015 by admin</span>
                   </div>
                 </div>

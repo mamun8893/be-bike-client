@@ -3,10 +3,15 @@ import "./register.css";
 import innerBannerBg from "../../images/inner-banner.jpg";
 import { Col, Container, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import useAuth from "../../hooks/useAuth";
+import { NavLink } from "react-router-dom";
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const { handleCreateUser } = useAuth();
+  const onSubmit = (data) => {
+    handleCreateUser(data.email, data.password, data.name);
+  };
   return (
     <div className="login-register">
       <div
@@ -34,9 +39,13 @@ const Register = () => {
                   <label htmlFor="">Email</label>
                   <input {...register("email")} />
                   <label htmlFor="">Password</label>
-                  <input {...register("password")} />
+                  <input type="password" {...register("password")} />
                   <input type="submit" value="submit" className="default-btn" />
                 </form>
+                <p className="form-bottom-txt">
+                  Alreday Have an Account?
+                  <NavLink to="/login"> Please Login</NavLink>
+                </p>
               </div>
             </Col>
           </Row>

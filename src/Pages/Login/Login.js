@@ -2,10 +2,17 @@ import React from "react";
 import innerBannerBg from "../../images/inner-banner.jpg";
 import { Col, Container, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { NavLink, useLocation, useHistory } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const location = useLocation();
+  const history = useHistory();
+  const { handleSignin } = useAuth();
+  const onSubmit = (data) => {
+    handleSignin(data.email, data.password, location, history);
+  };
   return (
     <div className="login-register">
       <div
@@ -31,9 +38,13 @@ const Login = () => {
                   <label htmlFor="">Email</label>
                   <input {...register("email")} />
                   <label htmlFor="">Password</label>
-                  <input {...register("password")} />
+                  <input type="password" {...register("password")} />
                   <input type="submit" value="submit" className="default-btn" />
                 </form>
+                <p className="form-bottom-txt">
+                  Do'nt Have an Account?
+                  <NavLink to="/register"> Please Registration</NavLink>
+                </p>
               </div>
             </Col>
           </Row>

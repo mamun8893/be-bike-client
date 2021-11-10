@@ -25,7 +25,7 @@ const Footer = () => {
           <Col md={4}>
             <div className="footer-middle">
               <h4>Useful Link</h4>
-              <ul class="footer-useful-links">
+              <ul className="footer-useful-links">
                 <li>Repair Help</li>
 
                 <li>Asset Library</li>
@@ -51,7 +51,7 @@ const Footer = () => {
           <Col md={4}>
             <div className="footer-contact">
               <h4>Contact Us</h4>
-              <div class="textwidget contact-us">
+              <div className="textwidget contact-us">
                 <p>Road-2, Block -3/A East Shibgonj Sylhet-3100, Bangladesh</p>
                 <p>
                   <a href="mailto:support@bicyclerepair.com">
@@ -75,7 +75,7 @@ const Footer = () => {
         </Row>
       </Container>
       <div className="footer-copyright">
-        <p class="copyright-text">
+        <p className="copyright-text">
           Copyright © 2021, All Right Reserved - by BEBIKE
         </p>
       </div>

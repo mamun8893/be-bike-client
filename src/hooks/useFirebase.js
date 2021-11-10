@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import initializeAuth from "../Pages/Login/Login/firebase.init";
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -7,19 +7,18 @@ import {
   onAuthStateChanged,
   signOut,
   GoogleAuthProvider,
-  signInWithPopup,
   updateProfile,
-  getIdToken,
 } from "firebase/auth";
+import initializeAuth from "../Pages/Login/firebase.init";
+import swal from "sweetalert";
 
 initializeAuth();
 
 const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [authError, setAuthError] = useState("");
   const [admin, setAdmin] = useState(false);
-  const [token, setToken] = useState("");
+
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
 
@@ -31,17 +30,16 @@ const useFirebase = () => {
         const newUser = { email, displayName: name };
         setUser(newUser);
         //Inset User Database
-        saveUser(email, name, "POST");
+        saveUser(email, name);
+        swal("Good Job!", "Successfully Register", "success");
         updateProfile(auth.currentUser, {
           displayName: name,
         })
           .then(() => {})
           .catch((error) => {});
-        setAuthError("");
       })
       .catch((error) => {
-        const errorCode = error.code;
-        setAuthError(error.message);
+        swal("Something went wrong!", `${error.message}`, "error");
       })
       .finally(() => setIsLoading(false));
   };
@@ -51,29 +49,14 @@ const useFirebase = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const destination = location?.state?.from || "/";
-        history.push(destination);
         const user = userCredential.user;
         setUser(user);
-
-        setAuthError();
+        swal("Good job!", "Successfully Login", "success").then(() => {
+          history.push(destination);
+        });
       })
       .catch((error) => {
-        const errorCode = error.code;
-        setAuthError(error.message);
-      })
-      .finally(() => setIsLoading(false));
-  };
-
-  const handleGoogleSignin = () => {
-    setIsLoading(true);
-    signInWithPopup(auth, googleProvider)
-      .then((result) => {
-        const user = result.user;
-        setUser(user);
-        saveUser(user.email, user.displayName, "PUT");
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
+        swal("Something went wrong!", `${error.message}`, "error");
       })
       .finally(() => setIsLoading(false));
   };
@@ -94,9 +77,6 @@ const useFirebase = () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
-        getIdToken(user).then((token) => {
-          setToken(token);
-        });
       } else {
         setUser({});
       }
@@ -104,11 +84,11 @@ const useFirebase = () => {
     });
   }, []);
 
-  const saveUser = (email, displayName, method) => {
+  const saveUser = (email, displayName) => {
     const user = { email, displayName };
 
     fetch("http://localhost:5000/users", {
-      method: method,
+      method: "POST",
       headers: {
         "content-type": "application/json",
       },
@@ -131,9 +111,6 @@ const useFirebase = () => {
     handleSignin,
     handleSignout,
     isLoading,
-    authError,
-    handleGoogleSignin,
-    token,
   };
 };
 

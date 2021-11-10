@@ -6,25 +6,43 @@ import Home from "./Pages/Home/Home";
 import Footer from "./Pages/Shared/Footer/Footer";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
+import AuthProvider from "./contexts/AuthProvider";
+import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import NotFound from "./Pages/NotFound/NotFound";
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Navigation></Navigation>
-        <Switch>
-          <Route exact path="/">
-            <Home></Home>
-          </Route>
-          <Route path="/register">
-            <Register></Register>
-          </Route>
-          <Route path="/login">
-            <Login></Login>
-          </Route>
-        </Switch>
-        <Footer></Footer>
-      </Router>
+      <AuthProvider>
+        <Router>
+          <Navigation></Navigation>
+          <Switch>
+            <Route exact path="/">
+              <Home></Home>
+              <Footer></Footer>
+            </Route>
+            <Route exact path="/home">
+              <Home></Home>
+              <Footer></Footer>
+            </Route>
+            <Route path="/register">
+              <Register></Register>
+              <Footer></Footer>
+            </Route>
+            <Route path="/login">
+              <Login></Login>
+              <Footer></Footer>
+            </Route>
+            <PrivateRoute path="/dashboard">
+              <Dashboard></Dashboard>
+            </PrivateRoute>
+            <Route path="*">
+              <NotFound></NotFound>
+            </Route>
+          </Switch>
+        </Router>
+      </AuthProvider>
     </div>
   );
 }

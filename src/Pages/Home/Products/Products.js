@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./product.css";
 import headerLine from "../../../images/heading-line.png";
 import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Product from "./Product";
 
 const Products = () => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
+
   return (
     <div className="product-area ic-sec-padding">
       <Container>
@@ -16,120 +24,9 @@ const Products = () => {
         </div>
         <div className="product-item-warper">
           <Row>
-            <Col md={4}>
-              <div className="product-item">
-                <div className="image">
-                  <img
-                    src="https://i.ibb.co/X4LDfjy/bike1.png"
-                    alt="bike"
-                    className="img-fluid"
-                  />
-                </div>
-                <div className="content">
-                  <h4>Mondraker F-Podium Carbon</h4>
-                  <p>
-                    F-Podium 29 Stealth Air Full Carbon, XCO Optimized Zero
-                    Suspension System, 100mm, XC Forward Geometry
-                  </p>
-                  <Link className="default-btn">Buy Now</Link>
-                </div>
-              </div>
-            </Col>
-            <Col md={4}>
-              <div className="product-item">
-                <div className="image">
-                  <img
-                    src="https://i.ibb.co/X4LDfjy/bike1.png"
-                    alt="bike"
-                    className="img-fluid"
-                  />
-                </div>
-                <div className="content">
-                  <h4>Mondraker F-Podium Carbon</h4>
-                  <p>
-                    F-Podium 29 Stealth Air Full Carbon, XCO Optimized Zero
-                    Suspension System, 100mm, XC Forward Geometry
-                  </p>
-                  <Link className="default-btn">Buy Now</Link>
-                </div>
-              </div>
-            </Col>
-            <Col md={4}>
-              <div className="product-item">
-                <div className="image">
-                  <img
-                    src="https://i.ibb.co/X4LDfjy/bike1.png"
-                    alt="bike"
-                    className="img-fluid"
-                  />
-                </div>
-                <div className="content">
-                  <h4>Mondraker F-Podium Carbon</h4>
-                  <p>
-                    F-Podium 29 Stealth Air Full Carbon, XCO Optimized Zero
-                    Suspension System, 100mm, XC Forward Geometry
-                  </p>
-                  <Link className="default-btn">Buy Now</Link>
-                </div>
-              </div>
-            </Col>
-            <Col md={4}>
-              <div className="product-item">
-                <div className="image">
-                  <img
-                    src="https://i.ibb.co/X4LDfjy/bike1.png"
-                    alt="bike"
-                    className="img-fluid"
-                  />
-                </div>
-                <div className="content">
-                  <h4>Mondraker F-Podium Carbon</h4>
-                  <p>
-                    F-Podium 29 Stealth Air Full Carbon, XCO Optimized Zero
-                    Suspension System, 100mm, XC Forward Geometry
-                  </p>
-                  <Link className="default-btn">Buy Now</Link>
-                </div>
-              </div>
-            </Col>
-            <Col md={4}>
-              <div className="product-item">
-                <div className="image">
-                  <img
-                    src="https://i.ibb.co/X4LDfjy/bike1.png"
-                    alt="bike"
-                    className="img-fluid"
-                  />
-                </div>
-                <div className="content">
-                  <h4>Mondraker F-Podium Carbon</h4>
-                  <p>
-                    F-Podium 29 Stealth Air Full Carbon, XCO Optimized Zero
-                    Suspension System, 100mm, XC Forward Geometry
-                  </p>
-                  <Link className="default-btn">Buy Now</Link>
-                </div>
-              </div>
-            </Col>
-            <Col md={4}>
-              <div className="product-item">
-                <div className="image">
-                  <img
-                    src="https://i.ibb.co/X4LDfjy/bike1.png"
-                    alt="bike"
-                    className="img-fluid"
-                  />
-                </div>
-                <div className="content">
-                  <h4>Mondraker F-Podium Carbon</h4>
-                  <p>
-                    F-Podium 29 Stealth Air Full Carbon, XCO Optimized Zero
-                    Suspension System, 100mm, XC Forward Geometry
-                  </p>
-                  <Link className="default-btn">Buy Now</Link>
-                </div>
-              </div>
-            </Col>
+            {products.slice(0, 6).map((product) => (
+              <Product key={product._id} product={product}></Product>
+            ))}
           </Row>
         </div>
       </Container>
