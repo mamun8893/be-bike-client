@@ -20,7 +20,7 @@ const useFirebase = () => {
   const [admin, setAdmin] = useState(false);
 
   const auth = getAuth();
-  const googleProvider = new GoogleAuthProvider();
+  // const googleProvider = new GoogleAuthProvider();
 
   const handleCreateUser = (email, password, name) => {
     setIsLoading(true);
@@ -85,6 +85,7 @@ const useFirebase = () => {
   }, []);
 
   const saveUser = (email, displayName) => {
+    setIsLoading(true);
     const user = { email, displayName };
 
     fetch("http://localhost:5000/users", {
@@ -95,7 +96,8 @@ const useFirebase = () => {
       body: JSON.stringify(user),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => console.log(data))
+      .finally(() => setIsLoading(false));
   };
 
   useEffect(() => {

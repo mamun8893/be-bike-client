@@ -23,12 +23,15 @@ const Navigation = () => {
               <Nav.Link as={NavLink} to="/home">
                 Home
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/all-product">
-                All Product
+              <Nav.Link as={NavLink} to="/all-bikes">
+                All Bikes
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/dashboard">
-                Dashboard
-              </Nav.Link>
+              {user.email && (
+                <Nav.Link as={NavLink} to="/dashboard">
+                  Dashboard
+                </Nav.Link>
+              )}
+
               {user.email ? (
                 <Nav.Link onClick={handleSignout}>logout</Nav.Link>
               ) : (

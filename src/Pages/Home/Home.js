@@ -1,14 +1,14 @@
 import React from "react";
 import Banner from "./Banner/Banner";
+import Bikes from "./Bikes/Bikes";
 import Blog from "./Blog/Blog";
 import ClientReview from "./ClientReview/ClientReview";
-import Products from "./Products/Products";
 
 const Home = () => {
   return (
     <>
       <Banner></Banner>
-      <Products></Products>
+      <Bikes></Bikes>
       <Blog></Blog>
       <ClientReview></ClientReview>
     </>

@@ -10,7 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import DashboardHome from "../DashboardHome/DashboardHome";
-import AddProduct from "../AddProduct/AddProduct";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -23,6 +23,11 @@ import "./dashboard.css";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import useAuth from "../../../hooks/useAuth";
 import AdminRoute from "../../../AdminRoute/AdminRoute";
+import AddBike from "../AddBike/AddBike";
+import Payment from "../Payment/Payment";
+import { Button } from "@material-ui/core";
+import MyOrder from "../MyOrder/MyOrder";
+import Review from "../Review/Review";
 
 const drawerWidth = 240;
 
@@ -30,7 +35,7 @@ function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   let { path, url } = useRouteMatch();
-  const { admin } = useAuth();
+  const { admin, handleSignout } = useAuth();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -40,15 +45,14 @@ function Dashboard(props) {
       <Toolbar />
 
       <List className="menu-warper">
-        {/* <Link to="/home">Home</Link> */}
         <Link to={`${url}`}>Dashboard</Link>
-        <Link to={`${url}/pay`}>Payment</Link>
+        <Link to={`${url}/my-payment`}>Payment</Link>
         <Link to={`${url}/my-order`}>My Order</Link>
-        <Link to={`${url}/review`}>Review</Link>
+        <Link to={`${url}/add-review`}>Review</Link>
         {admin && (
           <Box>
             <Link to={`${url}/make-admin`}>Make Admin</Link>
-            <Link to={`${url}/add-product`}>Add Product</Link>
+            <Link to={`${url}/add-bike`}>Add Bike</Link>
           </Box>
         )}
       </List>
@@ -68,19 +72,25 @@ function Dashboard(props) {
           ml: { sm: `${drawerWidth}px` },
         }}
       >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Be-Bike
-          </Typography>
+        <Toolbar className="topbar-warper">
+          <div className="topbar-left">
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: "none" } }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" noWrap component="div">
+              Be-Bike
+            </Typography>
+          </div>
+          <div className="topbar-right">
+            <Link to="/home">Home</Link>
+            <Button onClick={handleSignout}>Logout</Button>
+          </div>
         </Toolbar>
       </AppBar>
       <Box
@@ -137,8 +147,17 @@ function Dashboard(props) {
           <AdminRoute path={`${path}/:make-admin`}>
             <MakeAdmin></MakeAdmin>
           </AdminRoute>
-          <Route path={`${path}/:add-product`}>
-            <AddProduct></AddProduct>
+          <Route path={`${path}/:my-payment`}>
+            <Payment></Payment>
+          </Route>
+          <Route path={`${path}/:my-order`}>
+            <MyOrder></MyOrder>
+          </Route>
+          <Route path={`${path}/:add-review`}>
+            <Review></Review>
+          </Route>
+          <Route path={`${path}/:add-bike`}>
+            <AddBike></AddBike>
           </Route>
         </Switch>
       </Box>

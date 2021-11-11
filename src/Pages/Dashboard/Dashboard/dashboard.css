@@ -1,3 +1,7 @@
+.topbar-warper {
+  justify-content: space-between;
+}
+
 .menu-warper {
   padding-left: 20px;
 }

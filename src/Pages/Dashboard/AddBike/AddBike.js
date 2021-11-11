@@ -3,10 +3,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
 
-const AddProduct = () => {
+const AddBike = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/products", {
+    fetch("http://localhost:5000/bikes", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -25,7 +25,7 @@ const AddProduct = () => {
         <Grid container spacing={0}>
           <Grid item md={6}>
             <div className="title text-center">
-              <h2>Add Product</h2>
+              <h2>Add Bike</h2>
               <div className="login-register-warper">
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <label htmlFor="">Product Name</label>
@@ -47,4 +47,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default AddBike;

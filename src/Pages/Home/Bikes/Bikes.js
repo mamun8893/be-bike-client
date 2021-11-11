@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./product.css";
 import headerLine from "../../../images/heading-line.png";
-import { Col, Container, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Product from "./Product";
+import Bike from "./Bike";
 
-const Products = () => {
+const Bikes = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("http://localhost:5000/bikes")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -25,7 +25,7 @@ const Products = () => {
         <div className="product-item-warper">
           <Row>
             {products.slice(0, 6).map((product) => (
-              <Product key={product._id} product={product}></Product>
+              <Bike key={product._id} product={product}></Bike>
             ))}
           </Row>
         </div>
@@ -34,4 +34,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Bikes;

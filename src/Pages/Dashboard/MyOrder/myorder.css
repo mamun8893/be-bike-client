@@ -1,0 +1,8 @@
+.danger {
+  background-color: rgb(202, 57, 57);
+  color: #fff;
+}
+.danger:hover {
+  background-color: rgb(202, 57, 57);
+  color: #fff;
+}
