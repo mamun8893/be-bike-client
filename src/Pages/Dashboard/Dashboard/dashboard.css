@@ -1,13 +1,84 @@
+.dashboard-main {
+  background-color: #f8f8f8;
+  min-height: 100vh;
+}
+
+.dashboard-main nav.MuiBox-root {
+  box-shadow: 0 0 15px 0 rgb(34 41 47 / 5%);
+  background-color: #fff;
+  border-right: none;
+}
+.css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
+  border-right: none !important;
+}
+.css-1t29gy6-MuiToolbar-root {
+  border-bottom: 1px solid #f8f8f8;
+}
+.dash-logo img {
+  padding: 10px 0px;
+  width: 160px;
+}
+
 .topbar-warper {
   justify-content: space-between;
 }
 
+.dashboard-main header {
+  box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+  background: #fff;
+  margin-top: 20px;
+  margin-right: 20px;
+  border-radius: 5px;
+  width: calc(100% - 300px);
+  margin-left: 300px;
+}
+main .MuiToolbar-root {
+  margin-bottom: 40px;
+}
 .menu-warper {
   padding-left: 20px;
+  padding-top: 20px;
+}
+.menu-warper svg {
+  font-size: 20px;
+  color: #625f6e;
+  margin-right: 10px;
 }
 .menu-warper a {
   display: block;
-  color: black;
+  color: #625f6e;
   padding: 10px 20px;
   text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  transition: all 0.3s;
+}
+.menu-warper a:hover {
+  margin-left: 5px;
+}
+
+.topbar-left .MuiIconButton-root {
+  display: none;
+}
+.topbar-left a {
+  color: #625f6e;
+  text-decoration: none;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+.topbar-left svg {
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+}
+.topbar-right svg {
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+.main-card {
+  box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+  background: #fff;
+  border-radius: 8px;
 }

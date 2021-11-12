@@ -29,11 +29,11 @@ const MakeAdmin = () => {
     e.preventDefault();
   };
   return (
-    <div className="login-register-box-warper">
+    <div className="login-register-box-warper main-card">
       <Grid container spacing={0} justifyContent="center">
         <Grid item md={6}>
           <div className="title text-center">
-            <h2>Make a Admin</h2>
+            <h4>Make a Admin</h4>
             <div className="login-register-warper">
               <form onSubmit={handleSubmit}>
                 <label htmlFor="">Email</label>

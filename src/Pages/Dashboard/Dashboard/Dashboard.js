@@ -10,7 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import DashboardHome from "../DashboardHome/DashboardHome";
-
+import logo from "../../../images/logo.png";
 import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
 import "./dashboard.css";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
@@ -23,8 +23,18 @@ import MyOrder from "../MyOrder/MyOrder";
 import Review from "../Review/Review";
 import ManageOrder from "../ManageOrder/ManageOrder";
 import ManageProduct from "../ManageProduct/ManageProduct";
+import {
+  BiHomeAlt,
+  BiUserPlus,
+  BiFolderPlus,
+  BiClipboard,
+  BiCreditCardFront,
+  BiHeartCircle,
+  BiLayer,
+  BiLogInCircle,
+} from "react-icons/bi";
 
-const drawerWidth = 240;
+const drawerWidth = 260;
 
 function Dashboard(props) {
   const { window } = props;
@@ -37,24 +47,42 @@ function Dashboard(props) {
 
   const drawer = (
     <div>
-      <Toolbar />
-
+      <Toolbar>
+        <div className="dash-logo">
+          <img src={logo} alt="" />
+        </div>
+      </Toolbar>
       <List className="menu-warper">
-        <Link to={`${url}`}>Dashboard</Link>
-        {}
-
+        <Link to={`${url}`}>
+          <BiHomeAlt /> Dashboard
+        </Link>
         {admin ? (
           <Box>
-            <Link to={`${url}/make-admin`}>Make Admin</Link>
-            <Link to={`${url}/add-bike`}>Add Bike</Link>
-            <Link to={`${url}/manage-order`}>Manage order</Link>
-            <Link to={`${url}/manage-product`}>Manage Product</Link>
+            <Link to={`${url}/make-admin`}>
+              <BiUserPlus /> Make Admin
+            </Link>
+            <Link to={`${url}/add-bike`}>
+              <BiFolderPlus /> Add Bike
+            </Link>
+            <Link to={`${url}/manage-order`}>
+              <BiClipboard /> Manage order
+            </Link>
+            <Link to={`${url}/manage-product`}>
+              <BiLayer /> Manage Product
+            </Link>
           </Box>
         ) : (
           <Box>
-            <Link to={`${url}/my-payment`}>Payment</Link>
-            <Link to={`${url}/my-orders`}>My Order</Link>
-            <Link to={`${url}/add-review`}>Review</Link>
+            <Link to={`${url}/my-payment`}>
+              <BiCreditCardFront />
+              Payment
+            </Link>
+            <Link to={`${url}/my-orders`}>
+              <BiClipboard /> My Order
+            </Link>
+            <Link to={`${url}/add-review`}>
+              <BiHeartCircle /> Review
+            </Link>
           </Box>
         )}
       </List>
@@ -65,7 +93,7 @@ function Dashboard(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex" }} className="dashboard-main">
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -85,13 +113,16 @@ function Dashboard(props) {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" noWrap component="div">
-              Be-Bike
-            </Typography>
+            <Link to="/home">
+              <BiHomeAlt />
+              Home
+            </Link>
           </div>
           <div className="topbar-right">
-            <Link to="/home">Home</Link>
-            <Button onClick={handleSignout}>Logout</Button>
+            <Button onClick={handleSignout}>
+              <BiLogInCircle />
+              Logout
+            </Button>
           </div>
         </Toolbar>
       </AppBar>

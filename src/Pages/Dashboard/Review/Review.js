@@ -22,11 +22,11 @@ const Review = () => {
       });
   };
   return (
-    <div className="login-register-box-warper pt-0">
-      <Grid container spacing={0}>
+    <div className="login-register-box-warper pt-0 main-card">
+      <Grid container spacing={0} justifyContent="center">
         <Grid item md={6}>
-          <div className="title text-center">
-            <h2>Add Review</h2>
+          <div className="title text-center pt-4">
+            <h4>Add Review</h4>
             <div className="login-register-warper">
               <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="">Name</label>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import headerLine from "../../../images/heading-line.png";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -46,12 +45,6 @@ const ManageProduct = () => {
   };
   return (
     <div>
-      <div
-        className="heading text-center"
-        style={{ backgroundImage: `url(${headerLine})` }}
-      >
-        <h2>All Products</h2>
-      </div>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>

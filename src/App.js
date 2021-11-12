@@ -18,29 +18,36 @@ function App() {
     <div className="App">
       <AuthProvider>
         <Router>
-          <Navigation></Navigation>
           <Switch>
             <Route exact path="/">
+              <Navigation></Navigation>
               <Home></Home>
               <Footer></Footer>
             </Route>
             <Route exact path="/home">
+              <Navigation></Navigation>
               <Home></Home>
               <Footer></Footer>
             </Route>
             <Route path="/register">
+              <Navigation></Navigation>
               <Register></Register>
               <Footer></Footer>
             </Route>
             <Route path="/login">
+              <Navigation></Navigation>
               <Login></Login>
               <Footer></Footer>
             </Route>
             <Route path="/all-bikes">
+              <Navigation></Navigation>
               <AllBike></AllBike>
+              <Footer></Footer>
             </Route>
             <PrivateRoute path="/bike-details/:id">
+              <Navigation></Navigation>
               <BikeDetails></BikeDetails>
+              <Footer></Footer>
             </PrivateRoute>
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
