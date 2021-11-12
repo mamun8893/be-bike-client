@@ -6,7 +6,7 @@ import swal from "sweetalert";
 const AddBike = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/bikes", {
+    fetch("https://hidden-castle-03944.herokuapp.com/bikes", {
       method: "POST",
       headers: {
         "content-type": "application/json",

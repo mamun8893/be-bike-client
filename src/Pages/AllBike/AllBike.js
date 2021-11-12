@@ -7,7 +7,7 @@ import Bike from "../Home/Bikes/Bike";
 const AllBike = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/bikes")
+    fetch("https://hidden-castle-03944.herokuapp.com/bikes")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

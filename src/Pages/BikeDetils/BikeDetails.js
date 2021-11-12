@@ -15,7 +15,7 @@ const BikeDetails = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/bikes/${id}`)
+    fetch(`https://hidden-castle-03944.herokuapp.com/bikes/${id}`)
       .then((res) => res.json())
       .then((data) => setBikeDetails(data));
   }, []);
@@ -23,7 +23,7 @@ const BikeDetails = () => {
   const onSubmit = (data) => {
     data.productName = bikeDeatils.productName;
     data.status = false;
-    fetch("http://localhost:5000/place-order", {
+    fetch("https://hidden-castle-03944.herokuapp.com/place-order", {
       method: "POST",
       headers: {
         "content-type": "application/json",

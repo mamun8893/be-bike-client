@@ -88,7 +88,7 @@ const useFirebase = () => {
     setIsLoading(true);
     const user = { email, displayName };
 
-    fetch("http://localhost:5000/users", {
+    fetch("https://hidden-castle-03944.herokuapp.com/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -101,7 +101,7 @@ const useFirebase = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user.email}`)
+    fetch(`https://hidden-castle-03944.herokuapp.com/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin));
   }, [user.email]);

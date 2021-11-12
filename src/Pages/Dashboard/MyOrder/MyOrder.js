@@ -18,7 +18,7 @@ const MyOrder = () => {
   const email = user.email;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myOrders/${email}`)
+    fetch(`https://hidden-castle-03944.herokuapp.com/myOrders/${email}`)
       .then((res) => res.json())
       .then((data) => setMyOrder(data));
   }, [updateOrder]);
@@ -31,7 +31,7 @@ const MyOrder = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        const url = `http://localhost:5000/orderDelete/${id}`;
+        const url = `https://hidden-castle-03944.herokuapp.com/orderDelete/${id}`;
         fetch(url, {
           method: "DELETE",
         })
