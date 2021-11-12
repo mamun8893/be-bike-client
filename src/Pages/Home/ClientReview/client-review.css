@@ -46,3 +46,7 @@
 .review-title-user .title-rating {
   margin-left: 20px;
 }
+
+.review-title-user .fill-star {
+  color: #ffd80a;
+}

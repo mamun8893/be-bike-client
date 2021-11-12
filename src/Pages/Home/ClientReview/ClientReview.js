@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./client-review.css";
 import reviewBg from "../../../images/client-bg.jpg";
 import headerLine from "../../../images/heading-line.png";
@@ -6,8 +6,10 @@ import { Container } from "react-bootstrap";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import ReviewItem from "./ReviewItem";
 
 const ClientReview = () => {
+  const [reviews, setReviews] = useState([]);
   const settings = {
     dots: true,
     infinite: true,
@@ -15,6 +17,13 @@ const ClientReview = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
   };
+
+  useEffect(() => {
+    fetch("https://hidden-castle-03944.herokuapp.com/review")
+      .then((res) => res.json())
+      .then((data) => setReviews(data));
+  }, []);
+
   return (
     <div
       className="client-review ic-sec-padding"
@@ -29,90 +38,9 @@ const ClientReview = () => {
         </div>
         <div className="client-review-warper">
           <Slider {...settings}>
-            <div className="review-item">
-              <div className="description">
-                <p>
-                  “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempoinc ididunt ut magna aliqua dolor sit amet,
-                  consectetur adipiscing elit magna”
-                </p>
-              </div>
-              <div className="review-title-user">
-                <div className="user">
-                  <img
-                    src="https://i.ibb.co/VYrwx19/feedback-photo-2.png"
-                    alt="user"
-                  />
-                </div>
-                <div className="title-rating">
-                  <h4>Sam Barton</h4>
-                  <span>Rating</span>
-                </div>
-              </div>
-            </div>
-            <div className="review-item">
-              <div className="description">
-                <p>
-                  “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempoinc ididunt ut magna aliqua dolor sit amet,
-                  consectetur adipiscing elit magna”
-                </p>
-              </div>
-              <div className="review-title-user">
-                <div className="user">
-                  <img
-                    src="https://i.ibb.co/VYrwx19/feedback-photo-2.png"
-                    alt="user"
-                  />
-                </div>
-                <div className="title-rating">
-                  <h4>Sam Barton</h4>
-                  <span>Rating</span>
-                </div>
-              </div>
-            </div>
-            <div className="review-item">
-              <div className="description">
-                <p>
-                  “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempoinc ididunt ut magna aliqua dolor sit amet,
-                  consectetur adipiscing elit magna”
-                </p>
-              </div>
-              <div className="review-title-user">
-                <div className="user">
-                  <img
-                    src="https://i.ibb.co/VYrwx19/feedback-photo-2.png"
-                    alt="user"
-                  />
-                </div>
-                <div className="title-rating">
-                  <h4>Sam Barton</h4>
-                  <span>Rating</span>
-                </div>
-              </div>
-            </div>
-            <div className="review-item">
-              <div className="description">
-                <p>
-                  “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempoinc ididunt ut magna aliqua dolor sit amet,
-                  consectetur adipiscing elit magna”
-                </p>
-              </div>
-              <div className="review-title-user">
-                <div className="user">
-                  <img
-                    src="https://i.ibb.co/VYrwx19/feedback-photo-2.png"
-                    alt="user"
-                  />
-                </div>
-                <div className="title-rating">
-                  <h4>Sam Barton</h4>
-                  <span>Rating</span>
-                </div>
-              </div>
-            </div>
+            {reviews.map((review) => (
+              <ReviewItem key={review._id} review={review}></ReviewItem>
+            ))}
           </Slider>
         </div>
       </Container>

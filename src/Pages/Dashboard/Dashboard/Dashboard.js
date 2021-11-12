@@ -11,14 +11,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import DashboardHome from "../DashboardHome/DashboardHome";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-  useRouteMatch,
-} from "react-router-dom";
+import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
 import "./dashboard.css";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import useAuth from "../../../hooks/useAuth";
@@ -28,6 +21,8 @@ import Payment from "../Payment/Payment";
 import { Button } from "@material-ui/core";
 import MyOrder from "../MyOrder/MyOrder";
 import Review from "../Review/Review";
+import ManageOrder from "../ManageOrder/ManageOrder";
+import ManageProduct from "../ManageProduct/ManageProduct";
 
 const drawerWidth = 240;
 
@@ -46,13 +41,20 @@ function Dashboard(props) {
 
       <List className="menu-warper">
         <Link to={`${url}`}>Dashboard</Link>
-        <Link to={`${url}/my-payment`}>Payment</Link>
-        <Link to={`${url}/my-order`}>My Order</Link>
-        <Link to={`${url}/add-review`}>Review</Link>
-        {admin && (
+        {}
+
+        {admin ? (
           <Box>
             <Link to={`${url}/make-admin`}>Make Admin</Link>
             <Link to={`${url}/add-bike`}>Add Bike</Link>
+            <Link to={`${url}/manage-order`}>Manage order</Link>
+            <Link to={`${url}/manage-product`}>Manage Product</Link>
+          </Box>
+        ) : (
+          <Box>
+            <Link to={`${url}/my-payment`}>Payment</Link>
+            <Link to={`${url}/my-orders`}>My Order</Link>
+            <Link to={`${url}/add-review`}>Review</Link>
           </Box>
         )}
       </List>
@@ -150,7 +152,7 @@ function Dashboard(props) {
           <Route path={`${path}/:my-payment`}>
             <Payment></Payment>
           </Route>
-          <Route path={`${path}/:my-order`}>
+          <Route path={`${path}/:my-orders`}>
             <MyOrder></MyOrder>
           </Route>
           <Route path={`${path}/:add-review`}>
@@ -158,6 +160,12 @@ function Dashboard(props) {
           </Route>
           <Route path={`${path}/:add-bike`}>
             <AddBike></AddBike>
+          </Route>
+          <Route path={`${path}/:manage-order`}>
+            <ManageOrder></ManageOrder>
+          </Route>
+          <Route path={`${path}/:manage-product`}>
+            <ManageProduct></ManageProduct>
           </Route>
         </Switch>
       </Box>

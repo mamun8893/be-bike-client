@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import headerLine from "../../../images/heading-line.png";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -6,22 +7,18 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button, Chip } from "@material-ui/core";
-import useAuth from "../../../hooks/useAuth";
+import { Button } from "@material-ui/core";
 import swal from "sweetalert";
-import "./myorder.css";
 
-const MyOrder = () => {
-  const [myOrder, setMyOrder] = useState([]);
-  const [updateOrder, setUpdateOrder] = useState(false);
-  const { user } = useAuth();
-  const email = user.email;
+const ManageProduct = () => {
+  const [allProduct, setAllProduct] = useState([]);
+  const [updateProduct, setUpdateProduct] = useState(false);
 
   useEffect(() => {
-    fetch(`https://hidden-castle-03944.herokuapp.com/myOrders/${email}`)
+    fetch("https://hidden-castle-03944.herokuapp.com/bikes")
       .then((res) => res.json())
-      .then((data) => setMyOrder(data));
-  }, [updateOrder]);
+      .then((data) => setAllProduct(data));
+  }, [updateProduct]);
 
   const handleDelete = (id) => {
     swal({
@@ -31,14 +28,14 @@ const MyOrder = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        const url = `https://hidden-castle-03944.herokuapp.com/orderDelete/${id}`;
+        const url = `https://hidden-castle-03944.herokuapp.com/productDelete/${id}`;
         fetch(url, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((result) => {
             if (result.acknowledged) {
-              setUpdateOrder(true);
+              setUpdateProduct(!updateProduct);
             }
           });
         swal("Item has been deleted!", {
@@ -47,35 +44,36 @@ const MyOrder = () => {
       }
     });
   };
-
   return (
     <div>
+      <div
+        className="heading text-center"
+        style={{ backgroundImage: `url(${headerLine})` }}
+      >
+        <h2>All Products</h2>
+      </div>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Product Name</TableCell>
-              <TableCell align="right">Status</TableCell>
-              <TableCell align="right">Action</TableCell>
+              <TableCell>Image</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Price</TableCell>
+              <TableCell align="left">Action</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {myOrder.map((item) => (
+          <TableBody className="all-prodyct-table-body">
+            {allProduct.map((item) => (
               <TableRow
                 key={item._id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {item.productName}
+                  <img src={item.image} alt="" />
                 </TableCell>
-                <TableCell align="right">
-                  {item.status ? (
-                    <Chip label="Shipped" className="success" />
-                  ) : (
-                    <Chip label="Pending" className="danger" />
-                  )}
-                </TableCell>
-                <TableCell align="right">
+                <TableCell align="left">{item.productName}</TableCell>
+                <TableCell align="left">{item.price}</TableCell>
+                <TableCell align="left">
                   <Button
                     className="danger"
                     onClick={() => handleDelete(item._id)}
@@ -92,4 +90,4 @@ const MyOrder = () => {
   );
 };
 
-export default MyOrder;
+export default ManageProduct;

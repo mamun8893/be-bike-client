@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./product.css";
 import headerLine from "../../../images/heading-line.png";
 import { Container, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import Bike from "./Bike";
 
 const Bikes = () => {

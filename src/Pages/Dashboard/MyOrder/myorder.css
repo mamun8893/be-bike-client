@@ -1,8 +1,21 @@
 .danger {
-  background-color: rgb(202, 57, 57);
-  color: #fff;
+  background-color: rgb(202, 57, 57) !important;
+  color: #fff !important;
 }
 .danger:hover {
-  background-color: rgb(202, 57, 57);
-  color: #fff;
+  background-color: rgb(202, 57, 57) !important;
+  color: #fff !important;
+}
+
+.success {
+  background-color: green !important;
+  color: #fff !important;
+}
+.success:hover {
+  background-color: green !important;
+  color: #fff !important;
+}
+
+.all-prodyct-table-body img {
+  width: 150px;
 }

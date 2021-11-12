@@ -6,7 +6,6 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
-  GoogleAuthProvider,
   updateProfile,
 } from "firebase/auth";
 import initializeAuth from "../Pages/Login/firebase.init";
@@ -20,7 +19,8 @@ const useFirebase = () => {
   const [admin, setAdmin] = useState(false);
 
   const auth = getAuth();
-  // const googleProvider = new GoogleAuthProvider();
+
+  //Create User
 
   const handleCreateUser = (email, password, name) => {
     setIsLoading(true);
@@ -44,6 +44,8 @@ const useFirebase = () => {
       .finally(() => setIsLoading(false));
   };
 
+  //Signin User
+
   const handleSignin = (email, password, location, history) => {
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
@@ -60,6 +62,8 @@ const useFirebase = () => {
       })
       .finally(() => setIsLoading(false));
   };
+
+  //Signout
 
   const handleSignout = () => {
     setIsLoading(true);
@@ -83,6 +87,8 @@ const useFirebase = () => {
       setIsLoading(false);
     });
   }, []);
+
+  //Save User Database
 
   const saveUser = (email, displayName) => {
     setIsLoading(true);
