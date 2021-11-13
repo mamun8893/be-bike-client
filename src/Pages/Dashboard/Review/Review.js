@@ -24,7 +24,7 @@ const Review = () => {
   return (
     <div className="login-register-box-warper pt-0 main-card">
       <Grid container spacing={0} justifyContent="center">
-        <Grid item md={6}>
+        <Grid item md={6} xs={12}>
           <div className="title text-center pt-4">
             <h4>Add Review</h4>
             <div className="login-register-warper">
@@ -35,11 +35,18 @@ const Review = () => {
                   {...register("userName")}
                 />
                 <label htmlFor="">Image URl</label>
-                <input {...register("image")} />
+                <input {...register("image")} placeholder="Enter Image Url" />
                 <label htmlFor="">Rating</label>
-                <input type="number" {...register("rating")} />
+                <input
+                  type="number"
+                  {...register("rating")}
+                  placeholder="Please Enter Rating 0-5"
+                />
                 <label htmlFor="">Description</label>
-                <textarea {...register("description")} />
+                <textarea
+                  {...register("description")}
+                  placeholder="Enter description"
+                />
                 <input type="submit" value="submit" className="default-btn" />
               </form>
             </div>

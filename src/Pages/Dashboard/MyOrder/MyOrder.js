@@ -38,7 +38,7 @@ const MyOrder = () => {
           .then((res) => res.json())
           .then((result) => {
             if (result.acknowledged) {
-              setUpdateOrder(true);
+              setUpdateOrder(!updateOrder);
             }
           });
         swal("Item has been deleted!", {

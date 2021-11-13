@@ -28,7 +28,7 @@ const Login = () => {
       <div className="login-register-box-warper">
         <Container>
           <Row className="justify-content-center">
-            <Col md={6}>
+            <Col lg={6} md={8}>
               <div className="title text-center">
                 <h2>Login</h2>
                 <p>Best place to Buy a Product</p>

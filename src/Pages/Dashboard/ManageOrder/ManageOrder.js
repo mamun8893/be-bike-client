@@ -97,7 +97,7 @@ const ManageOrder = () => {
               </TableCell>
               <TableCell align="left">
                 <Button
-                  className="danger"
+                  className="danger ms-1 mb-1"
                   onClick={() => handleDelete(item._id)}
                 >
                   Delete
@@ -105,7 +105,8 @@ const ManageOrder = () => {
                 <Button
                   ref={statusBtnRef}
                   onClick={() => handleUpdateStatus(item._id)}
-                  className="success ms-1"
+                  className="success ms-1 mb-1"
+                  disabled={item.status}
                 >
                   Shipped
                 </Button>

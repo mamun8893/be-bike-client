@@ -14,3 +14,16 @@
 .menu-area .nav-link:hover {
   color: #ea0129 !important;
 }
+
+/* Responsive */
+@media only screen and (max-width: 767.98px) {
+  .menu-area .nav-link {
+    padding: 10px 15px !important;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  .navbar-brand img {
+    width: 150px;
+  }
+}

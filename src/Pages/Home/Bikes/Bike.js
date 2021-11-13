@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Bike = (props) => {
   const { _id, productName, image, price, description } = props.product;
   return (
-    <Col md={4}>
+    <Col lg={4} md={6}>
       <div className="product-item">
         <div className="image">
           <img src={image} alt="bike" className="img-fluid" />

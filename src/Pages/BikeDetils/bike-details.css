@@ -39,3 +39,16 @@
   background-color: #ea0129 !important;
   color: #fff !important;
 }
+
+/* Responsive */
+
+@media only screen and (max-width: 991.98px) {
+  .bike-details-right {
+    margin-top: 30px;
+  }
+}
+@media only screen and (max-width: 575.98px) {
+  .bike-parchase-form form {
+    padding: 30px;
+  }
+}

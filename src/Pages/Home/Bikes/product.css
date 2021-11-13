@@ -28,6 +28,9 @@
   font-weight: 600;
   color: #0d0d0d;
   transition: all 0.5s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .product-item .content p {
   color: #0d0d0d;
@@ -45,4 +48,17 @@
 
 .product-item:hover h4 {
   color: #ea0129;
+}
+
+/* Responsive */
+
+@media only screen and (max-width: 767.98px) {
+  .product-item .image img {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 575.98px) {
+  .product-item .content h4 {
+    font-size: 18px;
+  }
 }

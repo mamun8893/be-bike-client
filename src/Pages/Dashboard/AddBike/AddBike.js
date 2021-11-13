@@ -23,7 +23,7 @@ const AddBike = () => {
     <div>
       <div className="login-register-box-warper pt-0 main-card">
         <Grid container spacing={0} justifyContent="center">
-          <Grid item md={6}>
+          <Grid item lg={6} md={8} sm={8} xs={12}>
             <div className="title text-center pt-4">
               <h4>Add Bike</h4>
               <div className="login-register-warper">

@@ -8,7 +8,6 @@ const MakeAdmin = () => {
 
   const handleBlur = (e) => {
     const email = e.target.value;
-    console.log(email);
     setEmail(email);
   };
   const handleSubmit = (e) => {

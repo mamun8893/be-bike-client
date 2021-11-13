@@ -21,7 +21,7 @@ const Footer = () => {
               </div>
             </div>
           </Col>
-          <Col md={4}>
+          <Col md={4} sm={6}>
             <div className="footer-middle">
               <h4>Useful Link</h4>
               <ul className="footer-useful-links">
@@ -47,7 +47,7 @@ const Footer = () => {
               </ul>
             </div>
           </Col>
-          <Col md={4}>
+          <Col md={4} sm={6}>
             <div className="footer-contact">
               <h4>Contact Us</h4>
               <div className="textwidget contact-us">

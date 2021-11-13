@@ -56,3 +56,18 @@
 .form-bottom-txt a {
   color: #ea0129;
 }
+
+/* Responsive */
+
+@media only screen and (max-width: 575.98px) {
+  .breadcumb-area {
+    padding: 60px 0px;
+  }
+  .login-register-warper {
+    padding: 25px;
+  }
+  .login-register-warper input {
+    height: 45px;
+    line-height: 45px;
+  }
+}

@@ -25,7 +25,7 @@
 .review-item {
   padding: 45px 47px 50px;
   background-color: #fff;
-  border-radius: 0;
+  border-radius: 5px;
   -webkit-box-shadow: 0px 0px 14px rgb(0 0 0 / 10%);
   box-shadow: 0px 0px 14px rgb(0 0 0 / 10%);
 }
@@ -49,4 +49,20 @@
 
 .review-title-user .fill-star {
   color: #ffd80a;
+}
+
+/* Responsive */
+
+@media only screen and (max-width: 1199.98px) {
+  .review-item {
+    padding: 30px 30px 40px;
+  }
+}
+@media only screen and (max-width: 575.98px) {
+  .slick-prev {
+    display: none !important;
+  }
+  .slick-next {
+    display: none !important;
+  }
 }
