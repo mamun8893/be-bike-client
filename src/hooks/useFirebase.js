@@ -22,13 +22,14 @@ const useFirebase = () => {
 
   //Create User
 
-  const handleCreateUser = (email, password, name) => {
+  const handleCreateUser = (email, password, name, reset) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         const newUser = { email, displayName: name };
         setUser(newUser);
+        reset();
         //Inset User Database
         saveUser(email, name);
         swal("Good Job!", "Successfully Register", "success");

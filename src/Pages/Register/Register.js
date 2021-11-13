@@ -7,10 +7,10 @@ import useAuth from "../../hooks/useAuth";
 import { NavLink } from "react-router-dom";
 
 const Register = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const { handleCreateUser } = useAuth();
   const onSubmit = (data) => {
-    handleCreateUser(data.email, data.password, data.name);
+    handleCreateUser(data.email, data.password, data.name, reset);
   };
   return (
     <div className="login-register">
