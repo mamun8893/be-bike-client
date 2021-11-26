@@ -4,7 +4,7 @@ It is a single page application made with ReactJS, React Bootstrap,Route, Fireba
 
 #### Project Featured:
 
-- IBike purchase website including admin & user panel.
+- Bike purchase website including admin & user panel.
 - Admin manage all products, all orders and make admin in register user
 - User mange my order and user can’t access admin panel.
 - Store data in mongodb
