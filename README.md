@@ -4,9 +4,9 @@ It is a single page application made with ReactJS, React Bootstrap,Route, Fireba
 
 #### Project Featured:
 
-- It is a bike purchase website user can buy bike.
-- I Have used Firebase Authentication
-- I Have used Private Route
+- IBike purchase website including admin & user panel.
+- Admin manage all products, all orders and make admin in register user
+- User mange my order and user can’t access admin panel.
 - Store data in mongodb
 - I Have used Hooks
 - I Have Used Context Api
